@@ -2,13 +2,9 @@ import styled from "styled-components";
 
 export const Button = styled.button`
   background-color: ${(props) =>
-    props.color === "primary"
-      ? props.theme.primary.background
-      : props.theme.secondary.background};
+    props.color === "primary" ? props.theme.darkGrey : props.theme.lightGrey};
   color: ${(props) =>
-    props.color === "primary"
-      ? props.theme.primary.color
-      : props.theme.secondary.color};
+    props.color === "primary" ? props.theme.lightGrey : props.theme.darkGrey};
   border-radius: 5px;
   padding: 0.5em 2em;
   border: none;
@@ -18,11 +14,11 @@ export const Button = styled.button`
     background-color: ${(props) =>
       props.color === "primary"
         ? props.theme.primary.hover.background
-        : props.theme.secondary.hover.background};
+        : props.theme.magenta};
     color: ${(props) =>
       props.color === "primary"
         ? props.theme.primary.hover.color
-        : props.theme.secondary.hover.color};
+        : props.theme.darkGrey};
     font-weight: bolder;
   }
 `;
