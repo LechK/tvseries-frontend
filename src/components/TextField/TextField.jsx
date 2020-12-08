@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import * as S from "./TextField.style";
 
-function TextField({ value, labelText, placeholder, handleChange, type }) {
+function TextField({
+  value,
+  labelText,
+  placeholder,
+  handleChange,
+  type,
+  minLength,
+  maxLength,
+}) {
   const [display, setDisplay] = useState(false);
 
   return (
@@ -12,6 +20,9 @@ function TextField({ value, labelText, placeholder, handleChange, type }) {
       <S.Input
         type={type}
         id={value}
+        minLength={minLength}
+        maxLength={maxLength}
+        required
         placeholder={placeholder}
         onChange={handleChange}
         onFocus={() => setDisplay(true)}
