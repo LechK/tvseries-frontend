@@ -1,4 +1,7 @@
 const theme = {
+  magenta: "rgb(191, 45, 191)",
+  lightGrey: "rgb(229, 229, 229)",
+  darkGrey: "rgb(29, 29, 29)",
   primary: {
     background: "#222222",
     color: "#ffffff",
@@ -15,6 +18,8 @@ const theme = {
       color: "cyan",
     },
   },
+
+  mobile: "576px",
 };
 
 export default theme;
