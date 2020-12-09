@@ -40,9 +40,8 @@ export const StyledLink = styled(Link)`
 
 export const Logo = styled.h1`
   font-weight: initial;
+  margin: 2px 0;
   padding: 0.45em 0;
-  text-decoration: none;
-  max-width: 40%;
   color: ${({ theme }) => theme.lightGrey};
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;

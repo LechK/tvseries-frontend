@@ -9,17 +9,15 @@ function Header() {
 
   return (
     <S.Header>
-      <S.Actions>
-        <S.StyledLink to="/">Home</S.StyledLink>
-        {auth.token && <S.StyledLink to="/about">About</S.StyledLink>}
-      </S.Actions>
       <Link to="/">
         <S.Logo>
           <S.Span>tv</S.Span>series
         </S.Logo>
       </Link>
-
+      <S.Line />
       <S.Actions>
+        <S.StyledLink to="/">Home</S.StyledLink>
+        {auth.token && <S.StyledLink to="/about">About</S.StyledLink>}
         {!auth.token && <S.StyledLink to="/login">Login</S.StyledLink>}
         {!auth.token && <S.StyledLink to="/register">Register</S.StyledLink>}
         {auth.token && (

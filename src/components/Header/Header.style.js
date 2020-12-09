@@ -3,14 +3,15 @@ import { Link } from "react-router-dom";
 
 export const Header = styled.header`
   display: flex;
-  justify-content: center;
   align-items: center;
+  flex-direction: column;
   box-shadow: 0 1px 1px 2px ${({ theme }) => theme.magenta};
   padding: 1em;
   background-color: ${({ theme }) => theme.darkGrey};
 `;
 
 export const Logo = styled.h1`
+  margin: 0 auto;
   max-height: 45px;
   text-decoration: none;
   max-width: 100%;
@@ -21,6 +22,9 @@ export const Logo = styled.h1`
   &:hover {
     font-weight: bolder;
   }
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+    padding-bottom: 0;
+  }
 `;
 
 export const Span = styled.span`
@@ -28,7 +32,18 @@ export const Span = styled.span`
   text-decoration: none;
 `;
 
-export const Actions = styled.nav``;
+export const Line = styled.div`
+  width: 33%;
+  height: 1px;
+  background-color: ${({ theme }) => theme.magenta};
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+    display: none;
+  }
+`;
+
+export const Actions = styled.nav`
+  padding-top: 0.5em;
+`;
 
 export const StyledLink = styled(Link)`
   margin-left: 5px;
