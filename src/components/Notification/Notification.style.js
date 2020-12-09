@@ -6,6 +6,8 @@ export const Box = styled.div`
 
 export const NotificationBox = styled.div`
   font-size: 1em;
+  display: flex;
+  justify-content: space-between;
   padding: 1em 0;
   padding-left: 1em;
   border-radius: 6px;
@@ -14,13 +16,16 @@ export const NotificationBox = styled.div`
   background-color: ${(props) => (props.color === "error" ? "red" : "green")};
 `;
 
-export const NotificationButton = styled.button`
-  float: right;
+export const NotificationButton = styled.div`
   border-radius: 50%;
+  position: relative;
+  margin-top: -12px;
+  margin-right: 5px;
+  width: 23px;
+  text-align: center;
+  height: 18px;
   border: none;
   background-color: black;
   color: white;
-  margin-right: 8px;
-  margin-top: -8px;
   cursor: pointer;
 `;
