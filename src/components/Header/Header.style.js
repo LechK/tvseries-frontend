@@ -18,6 +18,9 @@ export const Logo = styled.h1`
   color: ${({ theme }) => theme.lightGrey};
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  &:hover {
+    font-weight: bolder;
+  }
 `;
 
 export const Span = styled.span`
@@ -29,6 +32,7 @@ export const Actions = styled.nav``;
 
 export const StyledLink = styled(Link)`
   margin-left: 5px;
+  font-size: 1.1em;
   color: ${({ theme }) => theme.magenta};
   text-decoration: none;
   &:hover {
@@ -37,5 +41,15 @@ export const StyledLink = styled(Link)`
   }
   &:not(:last-child) {
     margin-right: 10px;
+  }
+  &.Logout {
+    color: rgb(255, 0, 0);
+    &:hover {
+      transition: 0.5s;
+      color: rgb(199, 0, 0);
+    }
+  }
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+    display: none;
   }
 `;

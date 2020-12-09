@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const FormBox = styled.div`
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+    padding: 0.5em;
+  }
   background-color: ${({ theme }) => theme.darkGrey};
   margin: 0 auto;
   padding: 1em 2em 3em;
@@ -14,6 +17,10 @@ export const FormBox = styled.div`
 
 export const Heading = styled.h2`
   color: ${({ theme }) => theme.lightGrey};
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+    margin: 0.5em 0;
+    font-size: 1.3em;
+  }
 `;
 
 export const P = styled.p`

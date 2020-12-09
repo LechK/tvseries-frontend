@@ -7,6 +7,6 @@ export const Section = styled.section`
 
 export const Container = styled.div`
   max-width: 760px;
-  padding: 1em 2em;
+  padding: 1em 0;
   margin: 0 auto;
 `;
