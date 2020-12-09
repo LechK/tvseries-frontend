@@ -22,7 +22,7 @@ function newUser(email, password, history, setNotification) {
         setNotification(data.msg);
       }
     })
-    .catch((err) => console.log(err));
+    .catch((err) => setNotification(err));
 }
 
 function Register() {
