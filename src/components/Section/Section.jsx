@@ -1,13 +1,8 @@
 import React from "react";
 import * as S from "./Section.style";
 
-function Section({ children, fullWidth, background }) {
-  return (
-    <S.Section background={background}>
-      {!fullWidth && <S.Container>{children}</S.Container>}
-      {fullWidth && children}
-    </S.Section>
-  );
+function Section({ children, background }) {
+  return <S.Section background={background}>{children}</S.Section>;
 }
 
 export default Section;

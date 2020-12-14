@@ -6,3 +6,4 @@ export { default as TextField } from "./TextField/TextField";
 export { default as Notification } from "./Notification/Notification";
 export { default as Burger } from "./Burger/Burger";
 export { default as Menu } from "./Menu/Menu";
+export { default as ShowBox } from "./ShowBox/ShowBox";

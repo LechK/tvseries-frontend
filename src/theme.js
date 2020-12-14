@@ -20,6 +20,7 @@ const theme = {
   },
 
   mobile: "576px",
+  medium: "767px",
 };
 
 export default theme;

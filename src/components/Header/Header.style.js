@@ -33,7 +33,7 @@ export const Span = styled.span`
 `;
 
 export const Line = styled.div`
-  width: 33%;
+  width: 120%;
   height: 1px;
   background-color: ${({ theme }) => theme.magenta};
   @media (max-width: ${({ theme }) => theme.mobile}) {
