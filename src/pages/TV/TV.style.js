@@ -1,6 +1,15 @@
 import styled from "styled-components";
 
-export const H2 = styled.h2`
-  width: 100%;
-  display: block;
+export const TV = styled.div`
+  & Section {
+    padding-top: 0.2em;
+    display: flex;
+    border: 1px solid black;
+    flex-wrap: wrap;
+    @media (max-width: ${({ theme }) => theme.mobile}) {
+      padding-top: 0.2em;
+      display: flex;
+      border: 1px solid black;
+    }
+  }
 `;

@@ -1,19 +1,38 @@
 import React from "react";
-import { Button, Section } from "../../components";
+import { Section, ShowBox } from "../../components";
+import * as S from "./TV.style";
 
 function TV() {
   return (
-    <>
-      <Section background="gainsboro">
-        Welcome to your React boilerplate. We hope that this will bring you up
-        to speed with your development.
-      </Section>
+    <S.TV>
       <Section>
-        <Button color="secondary" handleClick={() => alert("Hi")}>
-          Check React out
-        </Button>
+        <ShowBox
+          src="https://walter.trakt.tv/images/shows/000/001/390/fanarts/full/76d5df8aed.jpg.webp"
+          title="Game of Thrones"
+          year="2011"
+        />
+        <ShowBox
+          src="https://walter.trakt.tv/images/shows/000/001/390/fanarts/full/76d5df8aed.jpg.webp"
+          title="Game of Thrones"
+          year="2011"
+        />
+        <ShowBox
+          src="https://walter.trakt.tv/images/shows/000/001/390/fanarts/full/76d5df8aed.jpg.webp"
+          title="Game of Thrones"
+          year="2011"
+        />
+        <ShowBox
+          src="https://walter.trakt.tv/images/shows/000/001/390/fanarts/full/76d5df8aed.jpg.webp"
+          title="Game of Thrones"
+          year="2011"
+        />
+        <ShowBox
+          src="https://walter.trakt.tv/images/shows/000/001/390/fanarts/full/76d5df8aed.jpg.webp"
+          title="Game of Thrones"
+          year="2011"
+        />
       </Section>
-    </>
+    </S.TV>
   );
 }
 
