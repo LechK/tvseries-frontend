@@ -8,10 +8,12 @@ function Menu({ open }) {
 
   return (
     <S.StyledMenu open={open}>
-      <S.Logo>
-        <S.Span>tv</S.Span>series
-      </S.Logo>
-      <S.StyledLink to="/">Home</S.StyledLink>
+      <S.StyledLink to="/">
+        <S.Logo>
+          <S.Span>tv</S.Span>series
+        </S.Logo>
+      </S.StyledLink>
+      {auth.token && <S.StyledLink to="/tv">TV</S.StyledLink>}
       {!auth.token && <S.StyledLink to="/login">Login</S.StyledLink>}
       {!auth.token && <S.StyledLink to="/register">Register</S.StyledLink>}
       {auth.token && <S.StyledLink to="/about">About</S.StyledLink>}

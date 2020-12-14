@@ -42,6 +42,9 @@ export const Line = styled.div`
 `;
 
 export const Actions = styled.nav`
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+    display: none;
+  }
   padding-top: 0.5em;
 `;
 
@@ -63,8 +66,5 @@ export const StyledLink = styled(Link)`
       transition: 0.5s;
       color: rgb(199, 0, 0);
     }
-  }
-  @media (max-width: ${({ theme }) => theme.mobile}) {
-    display: none;
   }
 `;

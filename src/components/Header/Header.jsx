@@ -1,6 +1,5 @@
 import React from "react";
 import * as S from "./Header.style";
-import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 
@@ -9,14 +8,15 @@ function Header() {
 
   return (
     <S.Header>
-      <Link to="/">
+      <S.StyledLink to="/">
         <S.Logo>
           <S.Span>tv</S.Span>series
         </S.Logo>
-      </Link>
+      </S.StyledLink>
       <S.Line />
       <S.Actions>
-        <S.StyledLink to="/">Home</S.StyledLink>
+        {auth.token && <S.StyledLink to="/tv">TV</S.StyledLink>}
+
         {auth.token && <S.StyledLink to="/about">About</S.StyledLink>}
         {!auth.token && <S.StyledLink to="/login">Login</S.StyledLink>}
         {!auth.token && <S.StyledLink to="/register">Register</S.StyledLink>}

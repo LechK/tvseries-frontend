@@ -4,6 +4,7 @@ import { Header, Loading, Burger, Menu } from "./components/";
 import { useOnClickOutside } from "./hooks";
 
 const LazyHome = lazy(() => import("./pages/Home/Home"));
+const LazyTV = lazy(() => import("./pages/TV/TV"));
 const AboutLazy = lazy(() => import("./pages/About/About"));
 const LoginLazy = lazy(() => import("./pages/Login/Login"));
 const RegisterLazy = lazy(() => import("./pages/Register/Register"));
@@ -24,6 +25,7 @@ function Routes() {
       <Suspense fallback={<Loading />}>
         <Switch>
           <Route exact path="/" component={LazyHome} />
+          <Route exact path="/tv" component={LazyTV} />
           <Route exact path="/about" component={AboutLazy} />
           <Route exact path="/login" component={LoginLazy} />
           <Route exact path="/register" component={RegisterLazy} />
