@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
 export const Section = styled.section`
-  background: ${({ theme }) => theme.lightGrey};
+  background: ${(props) =>
+    props.background === "primary"
+      ? props.theme.darkGrey
+      : props.theme.lightGrey};
   max-width: 1280px;
   margin: 0 auto;
 `;
