@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 
 export const FormBox = styled.div`
   @media (max-width: ${({ theme }) => theme.mobile}) {
+    margin-top: 1em;
     padding: 0.5em;
   }
   background-color: ${({ theme }) => theme.darkGrey};
   margin: 0 auto;
+  margin-top: 1em;
   padding: 1em 2em 3em;
   border-radius: 7px;
   box-shadow: 1px 2px 1px 1px ${({ theme }) => theme.magenta};
