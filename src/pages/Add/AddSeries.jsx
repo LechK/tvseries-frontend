@@ -41,7 +41,7 @@ function newSeries(
     .catch((err) => setNotification(err));
 }
 
-function Register() {
+function AddSeries() {
   const [title, setTitle] = useState();
   const [creator, setCreator] = useState();
   const [premiere, setPremiere] = useState();
@@ -148,4 +148,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default AddSeries;
