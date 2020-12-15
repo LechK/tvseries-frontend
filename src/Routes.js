@@ -8,6 +8,9 @@ const LazyTV = lazy(() => import("./pages/TV/TV"));
 const AboutLazy = lazy(() => import("./pages/About/About"));
 const LoginLazy = lazy(() => import("./pages/Login/Login"));
 const RegisterLazy = lazy(() => import("./pages/Register/Register"));
+const SelectedShowLazy = lazy(() =>
+  import("./pages/SelectedShow/SelectedShow")
+);
 
 function Routes() {
   const node = useRef();
@@ -29,6 +32,7 @@ function Routes() {
           <Route exact path="/about" component={AboutLazy} />
           <Route exact path="/login" component={LoginLazy} />
           <Route exact path="/register" component={RegisterLazy} />
+          <Route exact path="/shows/:id" component={SelectedShowLazy} />
         </Switch>
       </Suspense>
     </Router>
