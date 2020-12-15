@@ -16,33 +16,39 @@ function SelectedShow() {
 
   return (
     <>
-      {show && show.id}
-      <S.ShowPage>
-        <Section>
-          <S.Heading>The Boys</S.Heading>
-        </Section>
-        <S.Wallpaper background="https://walter.trakt.tv/images/shows/000/139/960/fanarts/full/cae156577f.jpg.webp" />
-        <Section>
-          <S.H5>
-            <S.Span>CREATOR:</S.Span> Simon Rabbits
-          </S.H5>
-          <S.H5>
-            <S.Span>Premiered:</S.Span> 2019
-          </S.H5>
-          <S.H5>
-            <S.Span> Network:</S.Span> HBO
-          </S.H5>
-          <S.H4>
-            Description: Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Sit deleniti at neque accusamus ipsa harum repellendus, nisi
-            error sapiente quas laborum exercitationem dolorem quia repudiandae
-            error sapiente quas laborum exercitationem dolorem quia repudiandae
-            error sapiente quas laborum exercitationem dolorem quia repudiandae
-            error sapiente quas laborum exercitationem dolorem quia repudiandae
-          </S.H4>
-          <img src="" alt="" />
-        </Section>
-      </S.ShowPage>
+      {show &&
+        show.map((item) => {
+          return (
+            <S.ShowPage>
+              <Section background="primary">
+                <S.Heading>{item.title}</S.Heading>
+              </Section>
+              <S.Wallpaper background={item.wallpaper} />
+              <Section background="primary">
+                <S.H5>
+                  <S.Span>CREATOR:</S.Span> {item.creator}
+                </S.H5>
+                <S.H5>
+                  <S.Span>Premiered:</S.Span> {item.premiere}
+                </S.H5>
+                <S.H5>
+                  <S.Span> Network:</S.Span> {item.network}
+                </S.H5>
+                <S.H4>{item.description}</S.H4>
+              </Section>
+              {/* unfinished with season fetch */}
+              <Section>
+                <S.H3>Select season</S.H3>
+                <S.Poster src={item.poster} alt={item.title} />
+                <S.Poster src={item.poster} alt={item.title} />
+                <S.Poster src={item.poster} alt={item.title} />
+                <S.Poster src={item.poster} alt={item.title} />
+                <S.Poster src={item.poster} alt={item.title} />
+                <S.Poster src={item.poster} alt={item.title} />
+              </Section>
+            </S.ShowPage>
+          );
+        })}
     </>
   );
 }

@@ -3,11 +3,9 @@ import styled from "styled-components";
 export const ShowPage = styled.div`
   background: ${({ theme }) => theme.darkGrey};
   && Section {
-    background: ${({ theme }) => theme.darkGrey};
     padding: 0 1em;
   }
 `;
-
 export const Wallpaper = styled.img`
   width: 100%;
   height: 60vh;
@@ -24,7 +22,6 @@ export const Wallpaper = styled.img`
     background-position: center;
   }
 `;
-
 export const Heading = styled.h1`
   color: whitesmoke;
   margin-top: 0;
@@ -40,7 +37,10 @@ export const Heading = styled.h1`
     top: -0.2em;
   }
 `;
-
+export const H3 = styled.h3`
+  padding: 0.5em 0;
+  color: ${({ theme }) => theme.darkGrey};
+`;
 export const H5 = styled.h5`
   color: ${({ theme }) => theme.lightGrey};
   font-weight: bold;
@@ -55,9 +55,12 @@ export const H4 = styled.h4`
     font-size: small;
   }
 `;
-
 export const Span = styled.span`
   color: ${({ theme }) => theme.magenta};
   font-weight: normal;
   font-size: large;
+`;
+export const Poster = styled.img`
+  width: 15%;
+  padding: 0 0.5em 1em;
 `;
