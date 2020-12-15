@@ -16,7 +16,7 @@ function Menu({ open }) {
       {auth.token && <S.StyledLink to="/tv">TV</S.StyledLink>}
       {!auth.token && <S.StyledLink to="/login">Login</S.StyledLink>}
       {!auth.token && <S.StyledLink to="/register">Register</S.StyledLink>}
-      {auth.token && <S.StyledLink to="/about">About</S.StyledLink>}
+      {auth.token && <S.StyledLink to="/addSeries">Add Series</S.StyledLink>}
       {auth.token && (
         <S.StyledLink
           className="Logout"

@@ -5,7 +5,7 @@ import { useOnClickOutside } from "./hooks";
 
 const LazyHome = lazy(() => import("./pages/Home/Home"));
 const LazyTV = lazy(() => import("./pages/TV/TV"));
-const AboutLazy = lazy(() => import("./pages/About/About"));
+const AddLazy = lazy(() => import("./pages/Add/AddSeries"));
 const LoginLazy = lazy(() => import("./pages/Login/Login"));
 const RegisterLazy = lazy(() => import("./pages/Register/Register"));
 const SelectedShowLazy = lazy(() =>
@@ -29,10 +29,20 @@ function Routes() {
         <Switch>
           <Route exact path="/" component={LazyHome} />
           <Route exact path="/tv" component={LazyTV} />
-          <Route exact path="/about" component={AboutLazy} />
+          <Route exact path="/addSeries" component={AddLazy} />
           <Route exact path="/login" component={LoginLazy} />
           <Route exact path="/register" component={RegisterLazy} />
           <Route exact path="/shows/:id" component={SelectedShowLazy} />
+          {/* <Route
+            exact
+            path="/shows/:id/:seasons"
+            component={SelectedShowLazy}
+          />
+          <Route
+            exact
+            path="/shows/:id/:seasons/:episode"
+            component={SelectedShowLazy}
+          /> */}
         </Switch>
       </Suspense>
     </Router>
