@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Box = styled.div`
-  position: relative;
+  cursor: pointer;
   max-width: 50%;
   box-sizing: border-box;
   @media (max-width: ${({ theme }) => theme.medium}) {
@@ -16,17 +16,17 @@ export const ImgBox = styled.img`
 `;
 
 export const Title = styled.h3`
-  position: absolute;
-  bottom: 0;
-  left: 1em;
   color: whitesmoke;
+  background-color: black;
+  padding-left: 1em;
+  margin-top: -40px;
   @media (max-width: ${({ theme }) => theme.mobile}) {
     font-size: medium;
   }
 `;
 
 export const Span = styled.span`
-  color: #999;
+  color: magenta;
   font-weight: lighter;
   font-size: medium;
 `;

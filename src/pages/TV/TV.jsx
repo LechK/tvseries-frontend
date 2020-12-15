@@ -25,7 +25,7 @@ function TV() {
                 src={show.wallpaper}
                 title={show.title}
                 year={show.premiere}
-                handleClick={() => history.push(`/selectedShow/${show.id}`)}
+                handleClick={() => history.push(`/shows/${show.id}`)}
               />
             );
           })}
