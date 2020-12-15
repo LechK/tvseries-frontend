@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Box = styled.div`
-  border: 1px solid black;
   position: relative;
   max-width: 50%;
   box-sizing: border-box;
@@ -20,7 +19,7 @@ export const Title = styled.h3`
   position: absolute;
   bottom: 0;
   left: 1em;
-  color: white;
+  color: whitesmoke;
   @media (max-width: ${({ theme }) => theme.mobile}) {
     font-size: medium;
   }
