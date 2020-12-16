@@ -39,7 +39,7 @@ export const Heading = styled.h1`
 `;
 export const H3 = styled.h3`
   padding: 0.5em 0;
-  color: ${({ theme }) => theme.darkGrey};
+  color: ${({ theme }) => theme.lightGrey};
 `;
 export const H5 = styled.h5`
   color: ${({ theme }) => theme.lightGrey};
@@ -61,6 +61,49 @@ export const Span = styled.span`
   font-size: large;
 `;
 export const Poster = styled.img`
-  width: 15%;
-  padding: 0 0.5em 1em;
+  width: 160px;
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+    width: 100px;
+  }
+`;
+
+export const SeasonsSection = styled.div`
+  background: ${(props) =>
+    props.background === "primary"
+      ? props.theme.darkGrey
+      : props.theme.lightGrey};
+  max-width: 1280px;
+  margin: 0 auto;
+`;
+
+export const Flex = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+    justify-content: flex-start;
+  }
+`;
+
+export const SeasonBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 0.6em;
+  :hover {
+    background-color: ${({ theme }) => theme.lightGrey};
+    border-radius: 5px;
+    & Label {
+      color: ${({ theme }) => theme.darkGrey};
+    }
+  }
+`;
+
+export const Label = styled.label`
+  font-size: medium;
+  color: whitesmoke;
+  font-weight: bolder;
+  padding-top: 0.5em;
 `;
