@@ -21,7 +21,7 @@ function newSeason(season, seriesId, setNotification) {
   })
     .then((res) => res.json())
     .then((data) => {
-      if (data.msg === "User has been succesfully registered") {
+      if (data.msg) {
         setNotification(data.msg);
       } else {
         setNotification(data.msg);
@@ -30,7 +30,7 @@ function newSeason(season, seriesId, setNotification) {
     .catch((err) => setNotification(err));
 }
 
-function newEpisode(episode, seasonId, setNotification) {
+function newEpisode(episode, seasonId, episodeTitle, setNotification) {
   fetch(`http://localhost:8080/addEpisodes`, {
     method: "Post",
     headers: {
@@ -39,6 +39,7 @@ function newEpisode(episode, seasonId, setNotification) {
     body: JSON.stringify({
       episode: episode,
       seasonId: seasonId,
+      episodeTitle: episodeTitle,
     }),
   })
     .then((res) => res.json())
@@ -61,6 +62,7 @@ function AddSeasons() {
   const [seasonsId, setSeasonsId] = useState();
 
   const [episode, setEpisode] = useState();
+  const [episodeTitle, setEpisodeTitle] = useState();
 
   const [notification, setNotification] = useState();
 
@@ -78,7 +80,6 @@ function AddSeasons() {
     fetch(`http://localhost:8080/seasons/${seriesId}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setSeasonsId(data);
       })
       .catch((err) => console.log(err));
@@ -87,7 +88,6 @@ function AddSeasons() {
   return (
     <S.StyledSection>
       <S.FormBox>
-        <S.Heading>Add new Season</S.Heading>
         {notification && (
           <Notification
             color="error"
@@ -96,15 +96,12 @@ function AddSeasons() {
             {notification}
           </Notification>
         )}
+        <S.Heading>Add new Season</S.Heading>
+
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            newSeason(
-              season,
-              seriesId,
-              // history,
-              setNotification
-            );
+            newSeason(season, seriesId, setNotification);
           }}
         >
           <DropDownInput
@@ -125,24 +122,10 @@ function AddSeasons() {
       </S.FormBox>
 
       <S.FormBox>
-        <S.Heading>Add new Episode</S.Heading>
-        {notification && (
-          <Notification
-            color="error"
-            handleChange={() => setNotification(false)}
-          >
-            {notification}
-          </Notification>
-        )}
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            newEpisode(
-              episode,
-              seasonId,
-              // history,
-              setNotification
-            );
+            newEpisode(episode, seasonId, episodeTitle, setNotification);
           }}
         >
           <DropDownSeason
@@ -151,12 +134,20 @@ function AddSeasons() {
             handleChange={(e) => setSeasonId(e.target.value)}
           />
           <TextField
-            type="text"
+            type="number"
             id="episode"
             name="episode"
-            labelText="Episode"
+            labelText="Episode NR."
             placeholder="1"
             handleChange={(e) => setEpisode(e.target.value)}
+          />
+          <TextField
+            type="text"
+            id="episodeTitle"
+            name="episodeTitle"
+            labelText="Episode Title"
+            placeholder="Winter is Coming"
+            handleChange={(e) => setEpisodeTitle(e.target.value)}
           />
           <Button type="submit">Add Episode</Button>
         </form>
