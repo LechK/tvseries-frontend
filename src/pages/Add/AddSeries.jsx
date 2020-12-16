@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import { useHistory } from "react-router-dom";
-import { Section, TextField, Button, Notification } from "../../components";
+import { TextField, Button, Notification } from "../../components";
 import * as S from "./AddSeries.style";
 
 function newSeries(
@@ -53,7 +53,7 @@ function AddSeries() {
   // const history = useHistory();
 
   return (
-    <Section>
+    <S.StyledSection>
       <S.FormBox>
         <S.Heading>Add new Show</S.Heading>
         {notification && (
@@ -144,7 +144,7 @@ function AddSeries() {
           Already show added? <strong>Add seasons</strong>.
         </S.StyledLink>
       </S.LinkContainer>
-    </Section>
+    </S.StyledSection>
   );
 }
 

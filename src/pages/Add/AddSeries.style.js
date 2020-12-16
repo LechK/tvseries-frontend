@@ -1,6 +1,12 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+export const StyledSection = styled.div`
+  max-width: 760px;
+  padding: 0 0.7em;
+  margin: 0 auto;
+`;
+
 export const FormBox = styled.div`
   @media (max-width: ${({ theme }) => theme.mobile}) {
     margin-top: 1em;
