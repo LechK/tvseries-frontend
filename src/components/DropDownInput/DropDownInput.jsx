@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./DropDownInput.style";
 
 function DropDownInput({ handleChange, options, labelText, value, display }) {
+  const [selected, setSelected] = useState(options[0]?.id);
+
+  const onOptionChange = (e) => {
+    const value = e.target.value;
+    setSelected(value);
+
+    handleChange(value);
+  };
+
   return (
     <>
       <S.Label className="textInput" htmlFor={value} displayLabel={display}>
         {labelText}
       </S.Label>
-      <S.Select onChange={handleChange} defaultValue>
+      <S.Select onChange={onOptionChange} value={selected}>
         {options &&
           options.map((option) => (
             <option key={option.id} value={option.id}>
