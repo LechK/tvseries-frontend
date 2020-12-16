@@ -8,6 +8,7 @@ function SelectedShow() {
   const [show, setShow] = useState();
   const [seasons, setSeasons] = useState();
 
+  //to display shows
   useEffect(() => {
     fetch(`http://localhost:8080/tvseries/${id}`)
       .then((res) => res.json())
@@ -15,6 +16,7 @@ function SelectedShow() {
       .catch((err) => console.log(err));
   }, [id]);
 
+  //to display seasons in show
   useEffect(() => {
     fetch(`http://localhost:8080/seasons/${id}`)
       .then((res) => res.json())
