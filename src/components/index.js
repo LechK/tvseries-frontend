@@ -7,3 +7,4 @@ export { default as Notification } from "./Notification/Notification";
 export { default as Burger } from "./Burger/Burger";
 export { default as Menu } from "./Menu/Menu";
 export { default as ShowBox } from "./ShowBox/ShowBox";
+export { default as DropDownInput } from "./DropDownInput/DropDownInput";
