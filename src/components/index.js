@@ -9,3 +9,4 @@ export { default as Menu } from "./Menu/Menu";
 export { default as ShowBox } from "./ShowBox/ShowBox";
 export { default as DropDownInput } from "./DropDownInput/DropDownInput";
 export { default as DropDownSeason } from "./DropDownSeason/DropDownSeason";
+export { default as Footer } from "./Footer/Footer";

@@ -1,6 +1,6 @@
 import React, { Suspense, lazy, useRef, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Header, Loading, Burger, Menu } from "./components/";
+import { Header, Loading, Burger, Menu, Footer } from "./components/";
 import { useOnClickOutside } from "./hooks";
 
 const LazyHome = lazy(() => import("./pages/Home/Home"));
@@ -35,6 +35,11 @@ function Routes() {
           <Route exact path="/login" component={LoginLazy} />
           <Route exact path="/register" component={RegisterLazy} />
           <Route exact path="/shows/:id" component={SelectedShowLazy} />
+          <Route
+            exact
+            path="/shows/:id/:seasonid"
+            component={SelectedShowLazy}
+          />
           {/* <Route
             exact
             path="/shows/:id/:seasons"
@@ -47,6 +52,7 @@ function Routes() {
           /> */}
         </Switch>
       </Suspense>
+      <Footer />
     </Router>
   );
 }
