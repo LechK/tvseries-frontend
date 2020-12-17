@@ -59,7 +59,7 @@ function AddSeasons() {
 
   const [season, setSeason] = useState();
   const [seasonId, setSeasonId] = useState();
-  const [seasonsId, setSeasonsId] = useState();
+  const [seasonsArr, setSeasonsArr] = useState();
 
   const [episode, setEpisode] = useState();
   const [episodeTitle, setEpisodeTitle] = useState();
@@ -80,7 +80,7 @@ function AddSeasons() {
     fetch(`http://localhost:8080/seasons/${seriesId}`)
       .then((res) => res.json())
       .then((data) => {
-        setSeasonsId(data);
+        setSeasonsArr(data);
       })
       .catch((err) => console.log(err));
   }, [seriesId]);
@@ -130,7 +130,7 @@ function AddSeasons() {
         >
           <DropDownSeason
             labelText="SELECT SEASON"
-            options={seasonsId}
+            options={seasonsArr}
             handleChange={(e) => setSeasonId(e.target.value)}
           />
           <TextField
