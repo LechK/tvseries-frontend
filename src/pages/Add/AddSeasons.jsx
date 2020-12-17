@@ -37,14 +37,14 @@ function newEpisode(episode, seasonId, episodeTitle, setNotification) {
       "Content-type": "application/json",
     },
     body: JSON.stringify({
-      episode: episode,
+      orderNum: episode,
       seasonId: seasonId,
       episodeTitle: episodeTitle,
     }),
   })
     .then((res) => res.json())
     .then((data) => {
-      if (data.msg === "User has been succesfully registered") {
+      if (data.msg) {
         setNotification(data.msg);
       } else {
         setNotification(data.msg);
