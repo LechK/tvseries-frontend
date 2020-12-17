@@ -17,6 +17,9 @@ function DropDownInput({ handleChange, options, labelText, value, display }) {
         {labelText}
       </S.Label>
       <S.Select onChange={onOptionChange} value={selected}>
+        <option disabled value>
+          select an option
+        </option>
         {options &&
           options.map((option) => (
             <option key={option.id} value={option.id}>
