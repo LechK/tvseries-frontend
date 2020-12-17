@@ -73,6 +73,7 @@ export const SeasonsSection = styled.div`
       ? props.theme.darkGrey
       : props.theme.lightGrey};
   max-width: 1280px;
+  padding: 0 1em;
   margin: 0 auto;
 `;
 
@@ -81,7 +82,7 @@ export const Flex = styled.div`
   flex-wrap: wrap;
   justify-content: flex-start;
   @media (max-width: ${({ theme }) => theme.mobile}) {
-    justify-content: flex-start;
+    justify-content: space-around;
   }
 `;
 
@@ -106,4 +107,25 @@ export const Label = styled.label`
   color: whitesmoke;
   font-weight: bolder;
   padding-top: 0.5em;
+`;
+export const EpisodeLabel = styled.label`
+  max-width: 100px;
+  font-size: small;
+  color: whitesmoke;
+  font-weight: bolder;
+  padding: 0.3em 0;
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+    max-width: 70px;
+    font-size: x-small;
+  }
+`;
+
+export const EpisodePoster = styled.img`
+  width: 100px;
+  height: 150px;
+  object-fit: cover;
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+    width: 70px;
+    height: 90px;
+  }
 `;

@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Section } from "../../components";
 import * as S from "./SelectedShow.style";
 
 function SelectedShow() {
+  const history = useHistory();
   const { id } = useParams();
   const [show, setShow] = useState();
   const [seasons, setSeasons] = useState();
+  const { seasonid } = useParams();
+  console.log(seasonid);
+
+  const [episodes, setEpisodes] = useState();
+  console.log(episodes);
 
   //to display shows
   useEffect(() => {
@@ -23,6 +30,15 @@ function SelectedShow() {
       .then((data) => setSeasons(data))
       .catch((err) => console.log(err));
   }, [id]);
+
+  //to display episodes
+
+  useEffect(() => {
+    fetch(`http://localhost:8080/seasons/${seasonid}/episodes`)
+      .then((res) => res.json())
+      .then((data) => setEpisodes(data))
+      .catch((err) => console.log(err));
+  }, [seasonid]);
 
   return (
     <>
@@ -53,12 +69,40 @@ function SelectedShow() {
                   {seasons &&
                     seasons.map((season) => {
                       return (
-                        <>
-                          <S.SeasonBox>
+                        <div key={season.id}>
+                          <S.SeasonBox
+                            onClick={() =>
+                              history.push(`/shows/${item.id}/${season.id}`)
+                            }
+                          >
                             <S.Poster src={item.poster} alt={item.title} />
                             <S.Label>{season.season_name}</S.Label>
                           </S.SeasonBox>
-                        </>
+                        </div>
+                      );
+                    })}
+                </S.Flex>
+              </S.SeasonsSection>
+              <S.SeasonsSection background="primary">
+                <S.H3>Select pisode</S.H3>
+                <S.Flex>
+                  {episodes &&
+                    episodes.map((episode) => {
+                      return (
+                        <div key={episode.id}>
+                          <S.SeasonBox>
+                            <S.EpisodeLabel>
+                              Episode: {episode.order_num}
+                            </S.EpisodeLabel>
+                            <S.EpisodePoster
+                              src={item.wallpaper}
+                              alt={item.title}
+                            />
+                            <S.EpisodeLabel>
+                              {episode.episode_title}
+                            </S.EpisodeLabel>
+                          </S.SeasonBox>
+                        </div>
                       );
                     })}
                 </S.Flex>
