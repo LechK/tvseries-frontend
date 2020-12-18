@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Section, ShowBox } from "../../components";
-import * as S from "./TV.style";
+import * as S from "./Shows.style";
 
-function TV() {
+function Shows() {
   const [series, setSeries] = useState();
   const history = useHistory();
 
   useEffect(() => {
-    fetch(`http://localhost:8080/tvseries`)
+    fetch(`http://localhost:8080/shows`)
       .then((res) => res.json())
       .then((data) => setSeries(data))
       .catch((err) => console.log(err));
@@ -34,4 +34,4 @@ function TV() {
   );
 }
 
-export default TV;
+export default Shows;
