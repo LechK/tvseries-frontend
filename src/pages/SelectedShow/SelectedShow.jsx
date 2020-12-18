@@ -7,38 +7,49 @@ import * as S from "./SelectedShow.style";
 function SelectedShow() {
   const history = useHistory();
   const { id } = useParams();
+  console.log(id);
+  const { seasonId } = useParams();
+  const { episodeId } = useParams();
+
   const [show, setShow] = useState();
   const [seasons, setSeasons] = useState();
-  const { seasonid } = useParams();
-  console.log(seasonid);
-
   const [episodes, setEpisodes] = useState();
-  console.log(episodes);
 
-  //to display shows
+  //TO DISPLAY SINGLE SHOW FROM ALL SHOWS BY ID
   useEffect(() => {
-    fetch(`http://localhost:8080/tvseries/${id}`)
+    fetch(`http://localhost:8080/shows/${id}`)
       .then((res) => res.json())
       .then((data) => setShow(data))
       .catch((err) => console.log(err));
   }, [id]);
 
-  //to display seasons in show
+  //TO DISPLAY ALL SEASONS BY SHOW ID
   useEffect(() => {
-    fetch(`http://localhost:8080/seasons/${id}`)
+    fetch(`http://localhost:8080/shows/${id}/seasons`)
       .then((res) => res.json())
-      .then((data) => setSeasons(data))
+      .then((data) => {
+        setSeasons(data);
+        setSeasons(data);
+      })
       .catch((err) => console.log(err));
   }, [id]);
 
-  //to display episodes
-
+  //TO DISPLAY ALL EPISODES BY SEASON ID
   useEffect(() => {
-    fetch(`http://localhost:8080/seasons/${seasonid}/episodes`)
+    fetch(`http://localhost:8080/shows/id/seasons/${seasonId}/episodes`)
       .then((res) => res.json())
       .then((data) => setEpisodes(data))
       .catch((err) => console.log(err));
-  }, [seasonid]);
+  }, [seasonId]);
+
+  useEffect(() => {
+    fetch(
+      `http://localhost:8080/shows/id/seasons/seasonId/episodes/${episodeId}`
+    )
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+  }, [episodeId]);
 
   return (
     <>
@@ -46,6 +57,7 @@ function SelectedShow() {
         show.map((item) => {
           return (
             <S.ShowPage key={item.id}>
+              {/* displayed show section */}
               <Section background="primary">
                 <S.Heading>{item.title}</S.Heading>
               </Section>
@@ -72,7 +84,9 @@ function SelectedShow() {
                         <div key={season.id}>
                           <S.SeasonBox
                             onClick={() =>
-                              history.push(`/shows/${item.id}/${season.id}`)
+                              history.push(
+                                `/shows/${item.id}/seasons/${season.id}/episodes`
+                              )
                             }
                           >
                             <S.Poster src={item.poster} alt={item.title} />
@@ -83,14 +97,20 @@ function SelectedShow() {
                     })}
                 </S.Flex>
               </S.SeasonsSection>
-              <S.SeasonsSection background="primary">
-                <S.H3>Select pisode</S.H3>
+              <S.EpisodeSection background="primary">
+                <S.H3>Select episode</S.H3>
                 <S.Flex>
                   {episodes &&
                     episodes.map((episode) => {
                       return (
                         <div key={episode.id}>
-                          <S.SeasonBox>
+                          <S.EpisodeBox
+                            onClick={() =>
+                              history.push(
+                                `/shows/${item.id}/seasons/${season.id}/episodes/${episode.id}/`
+                              )
+                            }
+                          >
                             <S.EpisodeLabel>
                               Episode: {episode.order_num}
                             </S.EpisodeLabel>
@@ -101,12 +121,12 @@ function SelectedShow() {
                             <S.EpisodeLabel>
                               {episode.episode_title}
                             </S.EpisodeLabel>
-                          </S.SeasonBox>
+                          </S.EpisodeBox>
                         </div>
                       );
                     })}
                 </S.Flex>
-              </S.SeasonsSection>
+              </S.EpisodeSection>
             </S.ShowPage>
           );
         })}

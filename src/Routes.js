@@ -4,14 +4,16 @@ import { Header, Loading, Burger, Menu, Footer } from "./components/";
 import { useOnClickOutside } from "./hooks";
 
 const LazyHome = lazy(() => import("./pages/Home/Home"));
-const LazyTV = lazy(() => import("./pages/TV/TV"));
+const LazyShows = lazy(() => import("./pages/Shows/Shows"));
 const AddLazy = lazy(() => import("./pages/Add/AddSeries"));
+const AddCharacters = lazy(() => import("./pages/Add/AddCharacters"));
 const AddSeasons = lazy(() => import("./pages/Add/AddSeasons"));
 const LoginLazy = lazy(() => import("./pages/Login/Login"));
 const RegisterLazy = lazy(() => import("./pages/Register/Register"));
 const SelectedShowLazy = lazy(() =>
   import("./pages/SelectedShow/SelectedShow")
 );
+const EpisodeLazy = lazy(() => import("./pages/Episode/Episode"));
 
 function Routes() {
   const node = useRef();
@@ -29,27 +31,31 @@ function Routes() {
       <Suspense fallback={<Loading />}>
         <Switch>
           <Route exact path="/" component={LazyHome} />
-          <Route exact path="/tv" component={LazyTV} />
           <Route exact path="/addSeries" component={AddLazy} />
           <Route exact path="/addSeasons" component={AddSeasons} />
+          <Route exact path="/addCharacters" component={AddCharacters} />
           <Route exact path="/login" component={LoginLazy} />
           <Route exact path="/register" component={RegisterLazy} />
+
+          <Route exact path="/shows" component={LazyShows} />
           <Route exact path="/shows/:id" component={SelectedShowLazy} />
+          <Route exact path="/shows/:id/seasons" component={SelectedShowLazy} />
           <Route
             exact
-            path="/shows/:id/:seasonid"
-            component={SelectedShowLazy}
-          />
-          {/* <Route
-            exact
-            path="/shows/:id/:seasons"
+            path="/shows/:id/seasons/:seasonId"
             component={SelectedShowLazy}
           />
           <Route
             exact
-            path="/shows/:id/:seasons/:episode"
+            path="/shows/:id/seasons/:seasonId/episodes"
             component={SelectedShowLazy}
-          /> */}
+          />
+
+          <Route
+            exact
+            path="/shows/:id/seasons/:seasonId/episodes/:episodeId"
+            component={EpisodeLazy}
+          />
         </Switch>
       </Suspense>
       <Footer />
