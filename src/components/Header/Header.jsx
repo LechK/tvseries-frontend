@@ -15,9 +15,12 @@ function Header() {
       </S.StyledLink>
       <S.Line />
       <S.Actions>
-        {auth.token && <S.StyledLink to="/tv">TV</S.StyledLink>}
+        {auth.token && <S.StyledLink to="/shows">Shows</S.StyledLink>}
 
         {auth.token && <S.StyledLink to="/addSeries">Add Series</S.StyledLink>}
+        {auth.token && (
+          <S.StyledLink to="/addCharacters">Add Characters</S.StyledLink>
+        )}
         {!auth.token && <S.StyledLink to="/login">Login</S.StyledLink>}
         {!auth.token && <S.StyledLink to="/register">Register</S.StyledLink>}
         {auth.token && (
