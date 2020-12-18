@@ -77,6 +77,16 @@ export const SeasonsSection = styled.div`
   margin: 0 auto;
 `;
 
+export const EpisodeSection = styled.div`
+  background: ${(props) =>
+    props.background === "primary"
+      ? props.theme.darkGrey
+      : props.theme.lightGrey};
+  max-width: 1280px;
+  padding: 0 1em;
+  margin: 0 auto;
+`;
+
 export const Flex = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -127,5 +137,21 @@ export const EpisodePoster = styled.img`
   @media (max-width: ${({ theme }) => theme.mobile}) {
     width: 70px;
     height: 90px;
+  }
+`;
+
+export const EpisodeBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 0.5em;
+  :hover {
+    background-color: ${({ theme }) => theme.lightGrey};
+    border-radius: 5px;
+    & Label {
+      color: ${({ theme }) => theme.darkGrey};
+    }
   }
 `;
