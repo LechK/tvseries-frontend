@@ -12,13 +12,9 @@ export const Button = styled.button`
   cursor: pointer;
   &:hover {
     background-color: ${(props) =>
-      props.color === "primary"
-        ? props.theme.primary.hover.background
-        : props.theme.magenta};
+      props.color === "primary" ? props.theme.magenta : props.theme.magenta};
     color: ${(props) =>
-      props.color === "primary"
-        ? props.theme.primary.hover.color
-        : props.theme.darkGrey};
+      props.color === "primary" ? props.theme.darkGrey : props.theme.darkGrey};
     font-weight: bolder;
   }
 `;
