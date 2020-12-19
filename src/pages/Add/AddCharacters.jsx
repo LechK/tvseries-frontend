@@ -14,7 +14,8 @@ function newCharacter(
   vanishedAt,
   causeOf,
   photoURL,
-  setNotification
+  setNotification,
+  setNotificationSuccess
 ) {
   fetch(`http://localhost:8080/addCharacters`, {
     method: "Post",
@@ -33,7 +34,7 @@ function newCharacter(
     .then((res) => res.json())
     .then((data) => {
       if (data.msg) {
-        setNotification(data.msg);
+        setNotificationSuccess(data.msg);
       } else {
         setNotification(data.msg);
       }
@@ -52,6 +53,7 @@ function AddCharacters() {
   const [photoURL, setPhotoURL] = useState();
 
   const [notification, setNotification] = useState();
+  const [notificationSuccess, setNotificationSuccess] = useState();
 
   useEffect(() => {
     fetch(`http://localhost:8080/shows`)
@@ -74,6 +76,11 @@ function AddCharacters() {
             {notification}
           </Notification>
         )}
+        {notificationSuccess && (
+          <Notification handleChange={() => setNotificationSuccess(false)}>
+            {notificationSuccess}
+          </Notification>
+        )}
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -84,7 +91,8 @@ function AddCharacters() {
               vanishedAt,
               causeOf,
               photoURL,
-              setNotification
+              setNotification,
+              setNotificationSuccess
             );
           }}
         >
