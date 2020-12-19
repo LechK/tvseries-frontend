@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const Page = styled.div`
+  min-height: calc(100vh - 190px);
+`;
+
 export const ShowPage = styled.div`
   background: ${({ theme }) => theme.darkGrey};
   && Section {

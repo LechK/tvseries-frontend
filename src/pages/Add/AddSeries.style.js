@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 export const StyledSection = styled.div`
   max-width: 760px;
+  min-height: calc(100vh - 194px);
   padding: 0 0.7em;
   margin: 0 auto;
 `;
