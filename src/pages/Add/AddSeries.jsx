@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { useHistory } from "react-router-dom";
 import { TextField, Button, Notification } from "../../components";
 import * as S from "./AddSeries.style";
 
@@ -11,8 +10,8 @@ function newSeries(
   wallpaper,
   description,
   network,
-  // history,
-  setNotification
+  setNotification,
+  setNotifSuccess
 ) {
   fetch(`http://localhost:8080/addtvseries`, {
     method: "Post",
@@ -31,9 +30,8 @@ function newSeries(
   })
     .then((res) => res.json())
     .then((data) => {
-      if (data.msg === "User has been succesfully registered") {
-        setNotification(data.msg);
-        // history.push("/addSeasons");
+      if (data.msg) {
+        setNotifSuccess(data.msg);
       } else {
         setNotification(data.msg);
       }
@@ -50,7 +48,7 @@ function AddSeries() {
   const [description, setDescription] = useState();
   const [network, setNetwork] = useState();
   const [notification, setNotification] = useState();
-  // const history = useHistory();
+  const [notifSuccess, setNotifSuccess] = useState();
 
   return (
     <S.StyledSection>
@@ -64,6 +62,11 @@ function AddSeries() {
             {notification}
           </Notification>
         )}
+        {notifSuccess && (
+          <Notification handleChange={() => setNotifSuccess(false)}>
+            {notifSuccess}
+          </Notification>
+        )}
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -75,8 +78,8 @@ function AddSeries() {
               wallpaper,
               description,
               network,
-              // history,
-              setNotification
+              setNotification,
+              setNotifSuccess
             );
           }}
         >

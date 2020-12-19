@@ -8,7 +8,7 @@ import {
 } from "../../components";
 import * as S from "./AddSeries.style";
 
-function newSeason(season, seriesId, setNotification) {
+function newSeason(season, seriesId, setNotification, setNotifSuccess) {
   fetch(`http://localhost:8080/addseasons`, {
     method: "Post",
     headers: {
@@ -22,7 +22,7 @@ function newSeason(season, seriesId, setNotification) {
     .then((res) => res.json())
     .then((data) => {
       if (data.msg) {
-        setNotification(data.msg);
+        setNotifSuccess(data.msg);
       } else {
         setNotification(data.msg);
       }
@@ -35,7 +35,8 @@ function newEpisode(
   seriesId,
   seasonId,
   episodeTitle,
-  setNotification
+  setNotification,
+  setNotifSuccess
 ) {
   fetch(`http://localhost:8080/addEpisodes`, {
     method: "Post",
@@ -52,7 +53,7 @@ function newEpisode(
     .then((res) => res.json())
     .then((data) => {
       if (data.msg) {
-        setNotification(data.msg);
+        setNotifSuccess(data.msg);
       } else {
         setNotification(data.msg);
       }
@@ -72,6 +73,7 @@ function AddSeasons() {
   const [episodeTitle, setEpisodeTitle] = useState();
 
   const [notification, setNotification] = useState();
+  const [notifSuccess, setNotifSuccess] = useState();
 
   //selects all from tvseries to dropdown
   useEffect(() => {
@@ -103,12 +105,17 @@ function AddSeasons() {
             {notification}
           </Notification>
         )}
+        {notifSuccess && (
+          <Notification handleChange={() => setNotifSuccess(false)}>
+            {notifSuccess}
+          </Notification>
+        )}
         <S.Heading>Add new Season</S.Heading>
 
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            newSeason(season, seriesId, setNotification);
+            newSeason(season, seriesId, setNotification, setNotifSuccess);
           }}
         >
           <DropDownInput
@@ -138,7 +145,8 @@ function AddSeasons() {
               seriesId,
               seasonId,
               episodeTitle,
-              setNotification
+              setNotification,
+              setNotifSuccess
             );
           }}
         >
