@@ -26,7 +26,8 @@ function Episode() {
     <S.Main>
       <Section>
         <S.H3>
-          Check all character status on each episode! Click buttons to navigate!
+          Check all characters' status on each episode! Click buttons to
+          navigate!
         </S.H3>
         <S.EpisodeNav>
           <Button

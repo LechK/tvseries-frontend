@@ -98,7 +98,7 @@ function AddCharacters() {
             id="fullname"
             name="fullname"
             labelText="Fullname"
-            placeholder="John Snow"
+            placeholder="Jon Snow"
             handleChange={(e) => setFullname(e.target.value)}
           />
 
@@ -114,7 +114,7 @@ function AddCharacters() {
             type="number"
             id="vanishedAt"
             name="vanishedAt"
-            labelText="Dissappeared or died episode number"
+            labelText="Disappeared or died episode number"
             placeholder="45"
             handleChange={(e) => setVanishedAt(e.target.value)}
           />
@@ -131,7 +131,7 @@ function AddCharacters() {
             id="photoURL"
             name="photoURL"
             labelText="Photo url"
-            placeholder="http://johnsnow.jpg"
+            placeholder="http://jonsnow.jpg"
             handleChange={(e) => setPhotoURL(e.target.value)}
           />
           <Button type="submit">Add new Character</Button>
