@@ -52,7 +52,7 @@ function SelectedShow() {
   }, [episodeId]);
 
   return (
-    <>
+    <S.Page>
       {show &&
         show.map((item) => {
           return (
@@ -107,7 +107,7 @@ function SelectedShow() {
                           <S.EpisodeBox
                             onClick={() =>
                               history.push(
-                                `/shows/${item.id}/seasons/${season.id}/episodes/${episode.id}/`
+                                `/shows/${item.id}/seasons/${seasonId}/episodes/${episode.order_num}`
                               )
                             }
                           >
@@ -130,7 +130,7 @@ function SelectedShow() {
             </S.ShowPage>
           );
         })}
-    </>
+    </S.Page>
   );
 }
 

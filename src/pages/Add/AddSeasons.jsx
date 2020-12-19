@@ -30,7 +30,13 @@ function newSeason(season, seriesId, setNotification) {
     .catch((err) => setNotification(err));
 }
 
-function newEpisode(episode, seasonId, episodeTitle, setNotification) {
+function newEpisode(
+  episode,
+  seriesId,
+  seasonId,
+  episodeTitle,
+  setNotification
+) {
   fetch(`http://localhost:8080/addEpisodes`, {
     method: "Post",
     headers: {
@@ -38,6 +44,7 @@ function newEpisode(episode, seasonId, episodeTitle, setNotification) {
     },
     body: JSON.stringify({
       orderNum: episode,
+      seriesId: seriesId,
       seasonId: seasonId,
       episodeTitle: episodeTitle,
     }),
@@ -68,7 +75,7 @@ function AddSeasons() {
 
   //selects all from tvseries to dropdown
   useEffect(() => {
-    fetch(`http://localhost:8080/tvseries`)
+    fetch(`http://localhost:8080/shows`)
       .then((res) => res.json())
       .then((data) => {
         setSeries(data);
@@ -77,7 +84,7 @@ function AddSeasons() {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/seasons/${seriesId}`)
+    fetch(`http://localhost:8080/shows/${seriesId}/seasons`)
       .then((res) => res.json())
       .then((data) => {
         setSeasonsArr(data);
@@ -122,10 +129,17 @@ function AddSeasons() {
       </S.FormBox>
 
       <S.FormBox>
+        <S.Heading>Add new episode</S.Heading>
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            newEpisode(episode, seasonId, episodeTitle, setNotification);
+            newEpisode(
+              episode,
+              seriesId,
+              seasonId,
+              episodeTitle,
+              setNotification
+            );
           }}
         >
           <DropDownSeason
