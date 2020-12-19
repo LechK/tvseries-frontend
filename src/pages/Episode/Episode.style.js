@@ -16,6 +16,23 @@ export const CharactersSection = styled.div`
   }
 `;
 
+export const EpisodeNav = styled.div`
+  height: 3em;
+  margin: 1em 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+`;
+
+export const DisplayCurrent = styled.button`
+  background-color: green;
+  text-align: center;
+  font-weight: bold;
+  color: ${({ theme }) => theme.lightGrey};
+  flex: 2;
+  padding: 0 1em;
+`;
+
 export const H3 = styled.h2`
   padding: 0.5em 0.3em;
   color: ${({ theme }) => theme.darkGrey};

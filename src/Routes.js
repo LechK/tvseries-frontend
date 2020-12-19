@@ -53,7 +53,7 @@ function Routes() {
 
           <Route
             exact
-            path="/shows/:id/seasons/:seasonId/episodes/:episodeId"
+            path="/shows/:id/seasons/:seasonId/episodes/:episodeNum"
             component={EpisodeLazy}
           />
         </Switch>

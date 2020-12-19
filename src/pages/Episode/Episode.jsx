@@ -1,26 +1,65 @@
 import React, { useEffect, useState } from "react";
-import { Section, CharacterBox } from "../../components";
+import { useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { Section, CharacterBox, Button } from "../../components";
 import * as S from "./Episode.style";
 
 function Episode() {
-  const [episodeOrderNumber, setEpisodeOrderNumber] = useState();
+  const { episodeNum } = useParams();
+  const { id } = useParams();
+  const { seasonId } = useParams();
+  const history = useHistory();
+  const [characters, setCharacters] = useState();
 
+  //fetch to display characters by episode number
   useEffect(() => {
     fetch(
-      `http://localhost:8080/shows/id/seasons/seasonId/episodes/${episodeOrderNumber}`
+      `http://localhost:8080/shows/${id}/seasons/${seasonId}/episodes/${episodeNum}`
     )
       .then((res) => res.json())
-      .then((data) => setEpisodeOrderNumber(data))
+      .then((data) => setCharacters(data))
       .catch((err) => console.log(err));
-  }, [episodeOrderNumber]);
+  }, [id, seasonId, episodeNum]);
 
+  console.log(episodeNum);
   return (
     <S.Main>
       <Section>
-        <S.H3>Check all character status on each episode!</S.H3>
+        <S.H3>
+          Check all character status on each episode! Click buttons to navigate!
+        </S.H3>
+        <S.EpisodeNav>
+          <Button
+            color="primary"
+            handleClick={() =>
+              history.push(
+                `/shows/${id}/seasons/${seasonId}/episodes/${
+                  Number(episodeNum) - Number(1)
+                }`
+              )
+            }
+          >
+            Episode {Number(episodeNum) - Number(1)}
+          </Button>
+          <S.DisplayCurrent>
+            Current episode: {Number(episodeNum)}
+          </S.DisplayCurrent>
+          <Button
+            color="primary"
+            handleClick={() =>
+              history.push(
+                `/shows/${id}/seasons/${seasonId}/episodes/${
+                  Number(episodeNum) + Number(1)
+                }`
+              )
+            }
+          >
+            Episode {Number(episodeNum) + Number(1)}
+          </Button>
+        </S.EpisodeNav>
         <S.CharactersSection>
-          {episodeOrderNumber &&
-            episodeOrderNumber.map((character) => {
+          {characters &&
+            characters.map((character) => {
               return (
                 <div key={character.id}>
                   <CharacterBox
