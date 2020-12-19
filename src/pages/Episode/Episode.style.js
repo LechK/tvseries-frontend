@@ -7,7 +7,16 @@ export const Main = styled.div`
   }
 `;
 
-export const H3 = styled.h3`
-  padding: 0.5em 0;
+export const CharactersSection = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  &&CharacterBox {
+    padding: 0 0.5em;
+  }
+`;
+
+export const H3 = styled.h2`
+  padding: 0.5em 0.3em;
   color: ${({ theme }) => theme.darkGrey};
 `;
