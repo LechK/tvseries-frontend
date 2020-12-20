@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   TextField,
   Button,
   Notification,
   DropDownInput,
 } from "../../components";
+import { AuthContext } from "../../contexts/AuthContext";
 import * as S from "./AddSeries.style";
 
 function newCharacter(
@@ -15,12 +16,14 @@ function newCharacter(
   causeOf,
   photoURL,
   setNotification,
-  setNotificationSuccess
+  setNotificationSuccess,
+  auth
 ) {
   fetch(`http://localhost:8080/addCharacters`, {
     method: "Post",
     headers: {
       "Content-type": "application/json",
+      Authorization: `Bearer ${auth.token}`,
     },
     body: JSON.stringify({
       fullname: fullname,
@@ -43,6 +46,7 @@ function newCharacter(
 }
 
 function AddCharacters() {
+  const auth = useContext(AuthContext);
   const [series, setSeries] = useState([]);
   const [seriesId, setSeriesId] = useState();
 
@@ -92,7 +96,8 @@ function AddCharacters() {
               causeOf,
               photoURL,
               setNotification,
-              setNotificationSuccess
+              setNotificationSuccess,
+              auth
             );
           }}
         >

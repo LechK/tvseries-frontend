@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   TextField,
   Button,
@@ -6,9 +6,10 @@ import {
   DropDownInput,
   DropDownSeason,
 } from "../../components";
+import { AuthContext } from "../../contexts/AuthContext";
 import * as S from "./AddSeries.style";
 
-function newSeason(season, seriesId, setNotification, setNotifSuccess) {
+function newSeason(season, seriesId, setNotification, setNotifSuccess, auth) {
   fetch(`http://localhost:8080/addseasons`, {
     method: "Post",
     headers: {
@@ -36,12 +37,14 @@ function newEpisode(
   seasonId,
   episodeTitle,
   setNotification,
-  setNotifSuccess
+  setNotifSuccess,
+  auth
 ) {
   fetch(`http://localhost:8080/addEpisodes`, {
     method: "Post",
     headers: {
       "Content-type": "application/json",
+      Authorization: `Bearer ${auth.token}`,
     },
     body: JSON.stringify({
       orderNum: episode,
@@ -62,6 +65,8 @@ function newEpisode(
 }
 
 function AddSeasons() {
+  const auth = useContext(AuthContext);
+
   const [series, setSeries] = useState([]);
   const [seriesId, setSeriesId] = useState();
 
@@ -115,7 +120,7 @@ function AddSeasons() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            newSeason(season, seriesId, setNotification, setNotifSuccess);
+            newSeason(season, seriesId, setNotification, setNotifSuccess, auth);
           }}
         >
           <DropDownInput
@@ -146,7 +151,8 @@ function AddSeasons() {
               seasonId,
               episodeTitle,
               setNotification,
-              setNotifSuccess
+              setNotifSuccess,
+              auth
             );
           }}
         >

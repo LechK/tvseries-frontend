@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { TextField, Button, Notification } from "../../components";
+import { AuthContext } from "../../contexts/AuthContext";
 import * as S from "./AddSeries.style";
 
 function newSeries(
@@ -11,12 +12,14 @@ function newSeries(
   description,
   network,
   setNotification,
-  setNotifSuccess
+  setNotifSuccess,
+  auth
 ) {
   fetch(`http://localhost:8080/addtvseries`, {
     method: "Post",
     headers: {
       "Content-type": "application/json",
+      Authorization: `Bearer ${auth.token}`,
     },
     body: JSON.stringify({
       title: title,
@@ -40,6 +43,8 @@ function newSeries(
 }
 
 function AddSeries() {
+  const auth = useContext(AuthContext);
+
   const [title, setTitle] = useState();
   const [creator, setCreator] = useState();
   const [premiere, setPremiere] = useState();
@@ -79,7 +84,8 @@ function AddSeries() {
               description,
               network,
               setNotification,
-              setNotifSuccess
+              setNotifSuccess,
+              auth
             );
           }}
         >
