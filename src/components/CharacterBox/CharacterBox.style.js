@@ -71,6 +71,9 @@ export const DeceasedPhoto = styled.div`
   box-sizing: border-box;
   padding: 0;
   mask-image: url(${skull}), radial-gradient(rgb(0, 0, 255, 0.7), transparent);
+  &:hover {
+    mask-image: unset;
+  }
 `;
 
 export const CauseOf = styled.h5`

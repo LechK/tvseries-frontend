@@ -24,14 +24,14 @@ function Episode() {
   console.log(episodeNum);
   return (
     <S.Main>
-      <Section>
+      <Section background="primary">
         <S.H3>
           Check all characters' status on each episode! Click buttons to
           navigate!
         </S.H3>
         <S.EpisodeNav>
           <Button
-            color="primary"
+            color="secondary"
             handleClick={() =>
               history.push(
                 `/shows/${id}/seasons/${seasonId}/episodes/${
@@ -46,7 +46,7 @@ function Episode() {
             Current episode: {Number(episodeNum)}
           </S.DisplayCurrent>
           <Button
-            color="primary"
+            color="secondary"
             handleClick={() =>
               history.push(
                 `/shows/${id}/seasons/${seasonId}/episodes/${
@@ -61,14 +61,31 @@ function Episode() {
         <S.CharactersSection>
           {characters &&
             characters.map((character) => {
-              return (
-                <div key={character.id}>
-                  <CharacterBox
-                    fullname={character.fullname}
-                    photo={character.photo}
-                  />
-                </div>
-              );
+              if (character.vanished_at <= episodeNum) {
+                return (
+                  <div key={character.id}>
+                    <CharacterBox
+                      type="deceased"
+                      causeOf={character.cause_of}
+                      alt={character.fullname}
+                      fullname={character.fullname}
+                      photo={character.photo}
+                    />
+                  </div>
+                );
+              } else {
+                return (
+                  <div key={character.id}>
+                    <CharacterBox
+                      color="alive"
+                      type="alive"
+                      fullname={character.fullname}
+                      alt={character.fullname}
+                      photo={character.photo}
+                    />
+                  </div>
+                );
+              }
             })}
         </S.CharactersSection>
       </Section>

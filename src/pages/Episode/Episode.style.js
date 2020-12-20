@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Main = styled.div`
+  background-color: ${({ theme }) => theme.darkGrey};
   min-height: calc(100vh - 213px);
   @media (max-width: ${({ theme }) => theme.mobile}) {
     min-height: calc(100vh - 173px);
@@ -26,6 +27,7 @@ export const EpisodeNav = styled.div`
 
 export const DisplayCurrent = styled.button`
   background-color: green;
+  border: 0;
   text-align: center;
   font-weight: bold;
   color: ${({ theme }) => theme.lightGrey};
@@ -34,6 +36,7 @@ export const DisplayCurrent = styled.button`
 `;
 
 export const H3 = styled.h2`
+  margin-top: 0;
   padding: 0.5em 0.3em;
-  color: ${({ theme }) => theme.darkGrey};
+  color: ${({ theme }) => theme.lightGrey};
 `;
