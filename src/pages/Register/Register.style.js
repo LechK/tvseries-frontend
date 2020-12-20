@@ -1,6 +1,13 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+export const Main = styled.div`
+  min-height: calc(100vh - 210px);
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+    min-height: calc(100vh - 155px);
+  }
+`;
+
 export const FormBox = styled.div`
   @media (max-width: ${({ theme }) => theme.mobile}) {
     margin-top: 1em;

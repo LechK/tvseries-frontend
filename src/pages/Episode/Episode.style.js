@@ -19,7 +19,7 @@ export const CharactersSection = styled.div`
 
 export const EpisodeNav = styled.div`
   height: 3em;
-  margin: 1em 0;
+  margin: 0 auto;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -28,11 +28,17 @@ export const EpisodeNav = styled.div`
 export const DisplayCurrent = styled.button`
   background-color: green;
   border: 0;
+  width: 100%;
+  border-radius: 5px;
   text-align: center;
   font-weight: bold;
   color: ${({ theme }) => theme.lightGrey};
   flex: 2;
   padding: 0 1em;
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+    font-size: x-small;
+    font-weight: bold;
+  }
 `;
 
 export const H3 = styled.h2`

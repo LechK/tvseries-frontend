@@ -32,50 +32,52 @@ function Register() {
   const history = useHistory();
 
   return (
-    <Section>
-      <S.FormBox>
-        <S.Heading>Register</S.Heading>
-        {notification && (
-          <Notification
-            color="error"
-            handleChange={() => setNotification(false)}
+    <S.Main>
+      <Section>
+        <S.FormBox>
+          <S.Heading>Register</S.Heading>
+          {notification && (
+            <Notification
+              color="error"
+              handleChange={() => setNotification(false)}
+            >
+              {notification}
+            </Notification>
+          )}
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              newUser(email, password, history, setNotification);
+            }}
           >
-            {notification}
-          </Notification>
-        )}
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            newUser(email, password, history, setNotification);
-          }}
-        >
-          <TextField
-            type="email"
-            id="email"
-            name="email"
-            labelText="Email"
-            placeholder="tv@series.com"
-            handleChange={(e) => setEmail(e.target.value)}
-          />
-          <TextField
-            type="password"
-            id="password"
-            minLength="8"
-            maxLength="64"
-            name="password"
-            labelText="Password"
-            placeholder="password123"
-            handleChange={(e) => setPassword(e.target.value)}
-          />
-          <Button type="submit">Register</Button>
-        </form>
-      </S.FormBox>
-      <S.LinkContainer>
-        <S.StyledLink to="/login">
-          Already have account? <strong>Login</strong>.
-        </S.StyledLink>
-      </S.LinkContainer>
-    </Section>
+            <TextField
+              type="email"
+              id="email"
+              name="email"
+              labelText="Email"
+              placeholder="tv@series.com"
+              handleChange={(e) => setEmail(e.target.value)}
+            />
+            <TextField
+              type="password"
+              id="password"
+              minLength="8"
+              maxLength="64"
+              name="password"
+              labelText="Password"
+              placeholder="password123"
+              handleChange={(e) => setPassword(e.target.value)}
+            />
+            <Button type="submit">Register</Button>
+          </form>
+        </S.FormBox>
+        <S.LinkContainer>
+          <S.StyledLink to="/login">
+            Already have an account? <strong>Login</strong>.
+          </S.StyledLink>
+        </S.LinkContainer>
+      </Section>
+    </S.Main>
   );
 }
 

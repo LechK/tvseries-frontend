@@ -17,11 +17,13 @@ export const CharacterBox = styled.div`
     margin: 0.5em;
     width: 120px;
     height: 180px;
+    box-sizing: border-box;
   }
   @media (max-width: ${({ theme }) => theme.mobile}) {
     margin: 0.5em;
     width: 100px;
     height: 150px;
+    box-sizing: border-box;
   }
 `;
 
@@ -44,13 +46,9 @@ export const CharacterName = styled.h3`
 `;
 
 export const Photo = styled.div`
-  object-fit: cover;
-  position: relative;
+  background-size: cover;
   border-radius: 5px;
   background-image: url(${(props) => props.photo});
-  mask-position: center;
-  mask-size: cover;
-  mask-repeat: no-repeat;
   width: 100%;
   height: 85%;
   box-sizing: border-box;
@@ -60,7 +58,6 @@ export const Photo = styled.div`
 export const DeceasedPhoto = styled.div`
   cursor: help;
   object-fit: cover;
-  position: relative;
   border-radius: 5px;
   background-image: url(${(props) => props.photo});
   mask-position: center;
@@ -70,18 +67,26 @@ export const DeceasedPhoto = styled.div`
   height: 85%;
   box-sizing: border-box;
   padding: 0;
-  mask-image: url(${skull}), radial-gradient(rgb(0, 0, 255, 0.7), transparent);
+  mask-image: url(${skull}), radial-gradient(rgb(0, 0, 255, 0.3), transparent);
   &:hover {
     mask-image: unset;
   }
 `;
 
 export const CauseOf = styled.h5`
-  color: ${({ theme }) => theme.darkGrey};
-  padding: 2em;
-  position: absolute;
+  color: ${({ theme }) => theme.lightGrey};
+  padding: 0.5em;
+  position: relative;
+  border-radius: 5px;
+  margin: -2em;
+  margin-top: 1em;
+  z-index: 2;
   box-sizing: border-box;
-  background-color: ${({ theme }) => theme.lightGrey};
+  border: 2px solid ${({ theme }) => theme.magenta};
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+    font-size: xx-small;
+  }
+  background-color: ${({ theme }) => theme.darkGrey};
 `;
 
 export const Status = styled.h5`
