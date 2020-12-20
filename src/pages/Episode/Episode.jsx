@@ -10,6 +10,7 @@ function Episode() {
   const { seasonId } = useParams();
   const history = useHistory();
   const [characters, setCharacters] = useState();
+  const [maxNumber, setMaxNumber] = useState();
 
   //fetch to display characters by episode number
   useEffect(() => {
@@ -21,7 +22,21 @@ function Episode() {
       .catch((err) => console.log(err));
   }, [id, seasonId, episodeNum]);
 
-  console.log(episodeNum);
+  //GET FOR MAX EPISODE NUMBER
+  useEffect(() => {
+    fetch(`http://localhost:8080/max/${id}`)
+      .then((res) => res.json())
+      .then((data) => setMaxNumber(data))
+      .catch((err) => console.log(err));
+  }, [id]);
+  console.log(maxNumber[0].max);
+
+  function hideButton() {
+    if (maxNumber[0].max > episodeNum) {
+      return <>a</>;
+    }
+  }
+
   return (
     <S.Main>
       <Section background="primary">
@@ -45,15 +60,16 @@ function Episode() {
           <S.DisplayCurrent>
             Current episode: {Number(episodeNum)}
           </S.DisplayCurrent>
+
           <Button
             color="secondary"
-            handleClick={() =>
+            handleClick={() => {
               history.push(
                 `/shows/${id}/seasons/${seasonId}/episodes/${
                   Number(episodeNum) + Number(1)
                 }`
-              )
-            }
+              );
+            }}
           >
             Episode {Number(episodeNum) + Number(1)}
           </Button>
