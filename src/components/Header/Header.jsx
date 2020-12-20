@@ -10,7 +10,7 @@ function Header() {
     <S.Header>
       <S.StyledLink to="/">
         <S.Logo>
-          <S.Span>tv</S.Span>series
+          <S.Span>tv</S.Span>status
         </S.Logo>
       </S.StyledLink>
       <S.Line />

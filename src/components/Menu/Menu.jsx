@@ -10,7 +10,7 @@ function Menu({ open }) {
     <S.StyledMenu open={open}>
       <S.StyledLink to="/">
         <S.Logo>
-          <S.Span>tv</S.Span>series
+          <S.Span>tv</S.Span>status
         </S.Logo>
       </S.StyledLink>
       {auth.token && <S.StyledLink to="/shows">Shows</S.StyledLink>}
