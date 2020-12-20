@@ -26,26 +26,33 @@ function Episode() {
   useEffect(() => {
     fetch(`http://localhost:8080/max/${id}`)
       .then((res) => res.json())
-      .then((data) => setMaxNumber(data))
+      .then((data) => setMaxNumber(data.[0].max))
       .catch((err) => console.log(err));
   }, [id]);
-  console.log(maxNumber[0].max);
 
   function hideButton() {
-    if (maxNumber[0].max > episodeNum) {
-      return <>a</>;
+    if (maxNumber > episodeNum) {
+      return (
+        <Button
+          color="secondary"
+          handleClick={() => {
+            history.push(
+              `/shows/${id}/seasons/${seasonId}/episodes/${
+                Number(episodeNum) + Number(1)
+              }`
+            );
+          }}
+        >
+          Episode {Number(episodeNum) + Number(1)}
+        </Button>
+      );
     }
   }
 
-  return (
-    <S.Main>
-      <Section background="primary">
-        <S.H3>
-          Check all characters' status on each episode! Click buttons to
-          navigate!
-        </S.H3>
-        <S.EpisodeNav>
-          <Button
+  function hideLeftButton() {
+    if (episodeNum >= 2) {
+      return (
+        <Button
             color="secondary"
             handleClick={() =>
               history.push(
@@ -57,22 +64,23 @@ function Episode() {
           >
             Episode {Number(episodeNum) - Number(1)}
           </Button>
+      );
+    }
+  }
+
+  return (
+    <S.Main>
+      <Section background="primary">
+        <S.H3>
+          Check all characters' status on each episode! Click buttons to
+          navigate!
+        </S.H3>
+        <S.EpisodeNav>
+          {hideLeftButton()}
           <S.DisplayCurrent>
             Current episode: {Number(episodeNum)}
           </S.DisplayCurrent>
-
-          <Button
-            color="secondary"
-            handleClick={() => {
-              history.push(
-                `/shows/${id}/seasons/${seasonId}/episodes/${
-                  Number(episodeNum) + Number(1)
-                }`
-              );
-            }}
-          >
-            Episode {Number(episodeNum) + Number(1)}
-          </Button>
+          {hideButton()}
         </S.EpisodeNav>
         <S.CharactersSection>
           {characters &&
