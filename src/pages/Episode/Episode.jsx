@@ -26,7 +26,10 @@ function Episode() {
   useEffect(() => {
     fetch(`http://localhost:8080/max/${id}`)
       .then((res) => res.json())
-      .then((data) => setMaxNumber(data.[0].max))
+      .then((data) => {
+        const max = data[0].max;
+        setMaxNumber(max);
+      })
       .catch((err) => console.log(err));
   }, [id]);
 
@@ -53,17 +56,17 @@ function Episode() {
     if (episodeNum >= 2) {
       return (
         <Button
-            color="secondary"
-            handleClick={() =>
-              history.push(
-                `/shows/${id}/seasons/${seasonId}/episodes/${
-                  Number(episodeNum) - Number(1)
-                }`
-              )
-            }
-          >
-            Episode {Number(episodeNum) - Number(1)}
-          </Button>
+          color="secondary"
+          handleClick={() =>
+            history.push(
+              `/shows/${id}/seasons/${seasonId}/episodes/${
+                Number(episodeNum) - Number(1)
+              }`
+            )
+          }
+        >
+          Episode {Number(episodeNum) - Number(1)}
+        </Button>
       );
     }
   }
