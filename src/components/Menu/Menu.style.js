@@ -19,6 +19,7 @@ export const StyledMenu = styled.nav`
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 3;
   }
 `;
 export const StyledLink = styled(Link)`

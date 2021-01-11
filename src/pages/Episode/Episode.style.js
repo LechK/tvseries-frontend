@@ -12,9 +12,8 @@ export const CharactersSection = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  &&CharacterBox {
-    padding: 0 0.5em;
-  }
+  padding: 0;
+  margin: 0;
 `;
 
 export const EpisodeNav = styled.div`

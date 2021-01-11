@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Main = styled.div`
   background-image: url("https://eskipaper.com/images/awesome-game-of-thrones-wallpaper-1.jpg");
   background-position: bottom;
+  background-size: cover;
   min-height: calc(100vh - 194px);
   padding: 0 2em;
   background-color: ${({ theme }) => theme.darkGrey};
